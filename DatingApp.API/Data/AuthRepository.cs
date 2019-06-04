@@ -9,9 +9,9 @@ namespace DatingApp.API.Data
     public class AuthRepository : IAuthRepository
     {
         private DataContext _dbContext;
-        public AuthRepository(DataContext _dbContext)
+        public AuthRepository(DataContext dbContext)
         {
-            _dbContext = _dbContext;   
+            _dbContext = dbContext;   
         }
         public async Task<bool> IsUserExists(string username)
         {
@@ -29,7 +29,7 @@ namespace DatingApp.API.Data
             {
                 return null;
             }
-            return null;
+            return user;
         }
 
         private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
